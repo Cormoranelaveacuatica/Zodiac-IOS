@@ -32,23 +32,29 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rny-vr-M8m">
-                                                    <rect key="frame" x="108" y="18" width="270" height="21"/>
+                                                    <rect key="frame" x="108" y="18" width="210" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNd-KU-R1E">
-                                                    <rect key="frame" x="108" y="57" width="270" height="21"/>
+                                                    <rect key="frame" x="108" y="57" width="210" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="d7L-Gr-i70">
+                                                    <rect key="frame" x="337" y="33" width="36" height="36"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" systemColor="systemPinkColor"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dateLabel" destination="VNd-KU-R1E" id="nEq-jQ-MRe"/>
+                                            <outlet property="favoriteImageView" destination="d7L-Gr-i70" id="XcA-Fb-9DT"/>
                                             <outlet property="nameLabel" destination="Rny-vr-M8m" id="MBg-q5-vim"/>
                                             <outlet property="signImageView" destination="y06-DX-xC0" id="SJV-xX-qQA"/>
                                             <segue destination="aaz-rL-GVY" kind="show" id="6Mm-q6-3Wy"/>
@@ -112,9 +118,17 @@
                             <constraint firstItem="2Qi-Z9-oZN" firstAttribute="trailing" secondItem="57x-dh-tGo" secondAttribute="trailing" id="vgy-ff-WVp"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="SVB-B4-GFe"/>
+                    <navigationItem key="navigationItem" id="SVB-B4-GFe">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="heart" catalog="system" id="gpM-PG-yoH">
+                            <color key="tintColor" systemColor="systemPinkColor"/>
+                            <connections>
+                                <action selector="setFavorite:" destination="aaz-rL-GVY" id="r96-X3-r6W"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="datesLabel" destination="tou-dB-rxV" id="C5H-um-A28"/>
+                        <outlet property="favoriteMenu" destination="gpM-PG-yoH" id="7J1-JJ-q7n"/>
                         <outlet property="signImageView" destination="wRA-kx-rr1" id="wPf-g6-EtL"/>
                     </connections>
                 </viewController>
@@ -142,8 +156,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="heart.fill" catalog="system" width="128" height="107"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

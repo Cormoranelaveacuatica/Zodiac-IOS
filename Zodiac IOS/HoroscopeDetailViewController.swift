@@ -10,7 +10,9 @@ import UIKit
 class HoroscopeDetailViewController: UIViewController {
     
     var horoscope: Horoscope!
+    var isFavorite = false
 
+    @IBOutlet weak var favoriteMenu: UIBarButtonItem!
     @IBOutlet weak var datesLabel: UILabel!
     @IBOutlet weak var signImageView: UIImageView!
     
@@ -21,7 +23,23 @@ class HoroscopeDetailViewController: UIViewController {
         self.navigationItem.title = horoscope.name
         signImageView.image = horoscope.image
         datesLabel.text = horoscope.dates
+        
+        isFavorite = SessionManager().isFavorite(id: horoscope.id)
+        setFavoriteIcon()
     }
+    
+    func setFavoriteIcon(){
+        if isFavorite {
+            favoriteMenu.image = UIImage(systemName: "heart.fill")
+        } else {
+            favoriteMenu.image = UIImage(systemName: "heart")
+        }
+    }
+    @IBAction func setFavorite (_ sender: Any) {
+        isFavorite = !isFavorite
+        SessionManager().setFavorite(id: isFavorite ? horoscope.id : "")
+        setFavoriteIcon()
+}
     
 
     /*

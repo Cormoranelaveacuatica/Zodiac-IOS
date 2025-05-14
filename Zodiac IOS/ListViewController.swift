@@ -25,6 +25,12 @@ class ListViewController: UIViewController, UITableViewDataSource, UISearchBarDe
         searchController.searchBar.delegate = self
         self.navigationItem.searchController = searchController
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+            
+        tableView.reloadData()
+    }
     //funcion de pasar parametros de una vista a otra
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailVC = segue.destination as! HoroscopeDetailViewController

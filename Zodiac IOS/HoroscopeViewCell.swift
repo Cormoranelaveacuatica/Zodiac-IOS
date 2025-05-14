@@ -9,26 +9,29 @@ import UIKit
 
 class HoroscopeViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var favoriteImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var signImageView: UIImageView!
     
     
-    func render (horoscope:Horoscope) {
-        nameLabel.text = horoscope.name
-        dateLabel.text = horoscope.dates
-        signImageView.image = horoscope.image
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    func render(horoscope: Horoscope) {
+            nameLabel.text = horoscope.name
+            dateLabel.text = horoscope.dates
+            signImageView.image = horoscope.image
+            favoriteImageView.isHidden = !SessionManager().isFavorite(id: horoscope.id)
+        }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        override func awakeFromNib() {
+            super.awakeFromNib()
+            // Initialization code
+        }
 
-        // Configure the view for the selected state
-    }
+        override func setSelected(_ selected: Bool, animated: Bool) {
+            super.setSelected(selected, animated: animated)
+
+            // Configure the view for the selected state
+        }
 
 }
